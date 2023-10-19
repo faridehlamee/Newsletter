@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://newsletterfl.azurewebsites.net",
+      "applicationUrl": "http://localhost:35507",
       "sslPort": 44311
     }
   },
@@ -12,7 +12,7 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://newsletterfl.azurewebsites.net",
+      "applicationUrl": "http://localhost:5103",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -21,7 +21,7 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://newsletterfl.azurewebsites.net;https://newsletterfl.azurewebsites.net",
+      "applicationUrl": "https://localhost:7139;http://localhost:5103",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
