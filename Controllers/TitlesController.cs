@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace NewsLetter6.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class TitlesController : Controller
     {
         private readonly NewsLetterContext _context;
