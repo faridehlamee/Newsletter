@@ -1,0 +1,101 @@
+<style>
+    @* .atags {
+        display: none;
+    }    *@
+</style>
+@model IEnumerable<NewsLetter6.Models.NewsLetterTitle>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create" class="atags">Create Newsletter</a>
+</p>
+<div class="container" style="border:3px solid #000"> 
+<table class="table">
+  
+    <tbody>
+        @foreach (var item in Model) {
+            <div class="page">
+            <tr class="OneNewsLetter">
+      
+                <tr style="border: hidden;" >
+                    <td></td>
+                    <td style="text-align: left;">
+                        <img src="/img/logo.png" alt="logo" style="width: 300px;" />
+                        <h2 class="text-primary">
+                            Newsletter #<span>@Html.DisplayFor(modelItem => item.TitleId)</span> - <span class="titleDate">@Html.DisplayFor(modelItem => item.TitleDate)</span>
+                        </h2>
+                    </td>
+
+                    
+
+                    <td>
+                        <span style="display: none;">@Html.DisplayFor(modelItem => item.IsActive)</span>
+                    </td>
+                </tr>
+                @foreach (var anArticle in item.Articles) {
+                   
+                        <tr style="border: hidden;" >
+                            
+                            <td style="font-size:36px; width:400px">
+                                @Html.DisplayFor(modelItem => anArticle.ArticleIdInTheTitle). @Html.DisplayFor(modelItem => anArticle.Name)
+                            </td>
+                        </tr>
+                        <tr style="border: hidden;" >
+                            <td>
+                                <img src="@anArticle.Picture" alt="Image Description" />
+                            </td>
+                            <td style="font-size:30px">
+                                @Html.DisplayFor(modelItem => anArticle.Description)
+                            </td>
+                                                                               
+                            <td class="atags">
+                                <a asp-action="Edit" asp-controller="Articles" asp-route-id="@anArticle.ArticleId" class="btn btn-primary">Edit</a>
+                                <a asp-action="Details" asp-controller="Articles" asp-route-id="@anArticle.ArticleId" class="btn btn-primary">Details</a>
+                                <a asp-action="Delete" asp-controller="Articles" asp-route-id="@anArticle.ArticleId" class="btn btn-primary">Delete</a>
+                            </td>
+                        </tr>               
+                    }
+                <tr style="border: hidden;" >
+                    <td>
+                        <a asp-action="Create" asp-controller="Articles" class="btn btn-primary btn-lg atags">Create New Article For Newsletter #<span>@Html.DisplayFor(modelItem => item.TitleId)</span> </a>                       
+                    </td>
+                </tr>
+                <tr style="border: hidden;" >
+                    <td class="atags">
+                        <a asp-action="Edit" asp-route-id="@item.TitleId" class="btn btn-primary btn-lg">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.TitleId" class="btn btn-primary btn-lg">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.TitleId" class="btn btn-primary btn-lg">Delete</a>
+                    </td>
+                </tr>
+                
+            </tr>
+            
+            </div>
+        }
+    </tbody>
+</table>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var dateElements = document.querySelectorAll('.titleDate');
+    dateElements.forEach(function(dateElement) {
+      var dateString = dateElement.textContent;
+      var date = new Date(dateString);
+
+      var options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      };
+
+      var formattedDate = date.toLocaleString('en-US', options);
+      dateElement.textContent = formattedDate;
+    });
+  });
+</script>
+
+
